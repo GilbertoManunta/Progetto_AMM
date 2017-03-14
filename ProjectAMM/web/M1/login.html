@@ -12,22 +12,31 @@ and open the template in the editor.
         <meta name="author" content="Manunta Gilberto">
     </head>
     <body>
-        <div>
-            <nav>
-                <ul>
-                    <li><a href="descrizione.html">Descrizione sito</a></li>
-                    <li><a href="profilo.html">Profilo</a></li>
-                    <li><a href="bacheca.html">Bacheca</a></li>
-                </ul>
-            </nav>
-        </div>
-        <div>
+        <header>
+            <div id="divLogin">
+                <h1>Login</h1>
+            </div>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="descrizione.html">Descrizione sito</a></li>
+                <li><a href="profilo.html">Profilo</a></li>
+                <li><a href="bacheca.html">Bacheca</a></li>
+            </ul>
+        </nav>
+        <div id="divBody">
             <form action="#" method="post">
+                <div id="divUser">
                     <label for="username">Username</label>
-                    <input type="text" name="username" id="username" value="username">
+                    <input type="text" name="username" id="username" value="Cognome">
+                </div>
+                <div id="divPass">
                     <label for="password">Password</label>
-                    <input type="password" name="password" id="password" value="password">
+                    <input type="password" name="password" id="password" value="Password">
+                </div>
+                <div id="divSubmit">
                     <button type="submit">Invia</button>
+                </div>
             </form>
         </div>
     </body>
