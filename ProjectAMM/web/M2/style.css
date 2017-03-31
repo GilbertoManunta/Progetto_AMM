@@ -1,0 +1,212 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 28-mar-2017, 9.23.03
+    Author     : Gilberto Manunta
+*/
+
+body{
+    background: #e2ffce;
+    font-family: Roboto, Arial, sans-serif;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+header{
+    border: 4px solid #26686a;
+    margin-left: 4px;
+    margin-right: 4px;
+    border-collapse: collapse;
+}
+
+h1{
+    color: #000000;
+    font-family: "Open Sans", Arial, sans-serif;
+}
+
+h2{
+    color: #000000;
+    font-family: "Open Sans", Arial, sans-serif;
+}
+
+h3{
+   color: #000000;
+   font-family: "Open Sans", Arial, sans-serif; 
+}
+
+p{
+    color: #8b4513;
+}
+
+#divSommario{
+    border: 4px solid #26686a;
+    border-top: none;
+    border-bottom: none;
+    margin-left: 4px;
+    float: left;
+    width: 20%;
+    padding-right: 2px;
+}
+
+.titoloNav{
+    text-align: center;
+    padding-right: 30px;
+}
+
+ul{
+  list-style-type: none;
+}
+
+.sizeLi li{
+    margin: 10px;
+    font-size: 20px;
+}
+
+a{
+    text-decoration: none;
+    color: #d42a25;
+}
+
+a:hover{
+    color: #8b4513;
+    font-weight: bold;
+}
+
+.divSection{
+    margin: 20px;
+}
+
+#divAccedi{
+    border: 4px solid #26686a;
+    margin-left: 4px;
+    float: left;
+    width: 20%;
+    font-size: 30px/45px solid;
+    text-align: center;
+    font-weight: bold;
+    padding-right: 2px;
+}
+
+nav{
+    border: 4px solid #26686a;
+    border-top: none;
+    margin-left: 4px;
+    float: left;
+    width: 20%;
+    padding-right: 2px;
+}
+
+.content{
+    border: 4px solid #26686a;
+    text-color: #000000;
+    margin-right: 4px;
+    margin-top: 8px;
+    width: 78%;
+    float: right;
+}
+
+#bodyLogin{
+    float: left;
+    width: 30%;
+    margin-left: 20%;
+    margin-top: 3%;
+    border: none;
+}
+
+#bodyProfilo{
+    border: none;
+    margin-top: 3%;
+}
+
+#divFormLogin{
+    margin-top: 20px;
+    margin-left: 20%;
+    margin-right: 20%;
+    
+}
+
+.campo{
+    font-size: 25px;
+    letter-spacing: 2px;
+}
+
+.campo label{
+    color: #8b4513;
+    font-weight: bold;
+    float: left; 
+
+}
+
+.campo input{
+    height: 40px;
+    font-size: 20px;
+    margin-bottom: 10px;
+    border: 0px;
+    width: 60%;
+    float: right;
+}
+
+.campo input:hover{
+    border: 2px solid #ee4747;
+    background-color: #fafafa;
+    border-radius: 10px;
+    text-indent: -100px;
+}
+
+.campo button{
+    background-color: #d42a25;
+    border: none;
+    color: white;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    width: 100%;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.divHeader{
+    width: 20%;
+    text-align: center;
+    display: inline-block;
+}
+
+.divHeader1{
+    width: 70%;
+    border-left: 4px solid #26686a;
+    text-align: center;
+    display: inline-block;
+}
+
+#divFormProfilo{
+    float: right;
+    width: 70%;
+    margin-right: 5%;
+}
+
+.campo textarea{
+    float: right;
+    max-width: 100%;
+    width: 60%;
+    font-family: Roboto, Arial, sans-serif;
+}
+
+.campo textarea:focus{
+   outline: none;
+   border-color: #22bb22;
+   box-shadow: 0 0 10px #22bb22;
+}
+
+.fieldForm{
+    height: 100px;
+}
+
+#fotoProfilo{
+    float: left;
+    margin-left: 100px;
+}
