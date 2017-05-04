@@ -1,0 +1,542 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 28-mar-2017, 9.23.03
+    Author     : Gilberto Manunta
+*/
+
+body{
+    background: whitesmoke;
+    font-family: Roboto, Arial, sans-serif;
+}
+
+header{
+    border: 4px solid whitesmoke;
+    background: #ca6c00;
+}
+
+h1{
+    color: #000000;
+    font-family: "Open Sans", Arial, sans-serif;
+}
+
+h2{
+    color: #000000;
+    font-family: "Open Sans", Arial, sans-serif;
+}
+
+h3{
+    color: #000000;
+    font-family: "Open Sans", Arial, sans-serif; 
+}
+
+p{
+    color: #8b4513;
+}
+
+.titoloNav{
+    text-align: center;
+}
+ul{
+    list-style-type: none;
+}
+
+a{
+    text-decoration: none;
+    color: #d42a25;
+}
+
+a:hover{
+    color: #8b4513;
+    font-weight: bold;
+}
+
+#bodyLogin{
+    border: none;
+}
+
+#bodyProfilo{
+    border: none;
+    margin-top: 3%;
+}
+
+#divFormLogin{
+    margin-top: 20px;
+    margin-left: 20%;
+    margin-right: 20%;
+
+}
+.campo{
+    font-size: 25px;
+    letter-spacing: 2px;
+}
+
+.campo label{
+    color: #8b4513;
+    font-weight: bold;
+    float: left;
+}
+
+.campo input{
+    margin-bottom: 10px;
+    border: 0px;
+    width: 100%;
+}
+
+.widthInputProfilo{
+    width: 50%;
+    float: right;
+}
+
+.campo input:hover{
+    border: 2px solid #ee4747;
+    background-color: #fafafa;
+    border-radius: 10px;
+}
+
+.campo button{
+    background-color: #d42a25;
+    border: none;
+    color: white;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    letter-spacing: 2px;        
+}
+
+.divHeader{
+    text-align: center;
+    display: inline-block;
+}
+
+.divHeader1{
+    text-align: center;
+    display: inline-block;
+}
+
+.campo textarea{
+    max-width: 100%;
+    width: 100%;
+    font-family: Roboto, Arial, sans-serif;
+}
+
+.campo textarea:focus{
+    outline: none;
+    border-color: #22bb22;
+    box-shadow: 0 0 10px #22bb22;
+}
+
+
+.postBacheca{
+    margin: 2%;
+    text-align: justify;
+    text-justify: inter-word;
+    border-bottom: #d42a25 3px solid;
+}
+
+.postBacheca:last-child{
+    border:none;
+}
+
+@media only screen and (min-width: 1024px){
+    body{
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+
+    header{
+        margin-left: 4px;
+        margin-right: 4px;
+    }
+
+    #divSommario{
+        border-bottom: 4px solid #ca6c00;
+        margin-left: 4px;
+        float: left;
+        width: 20%;
+        padding-right: 2px;
+    }
+
+    .titoloNav{
+        padding-right: 30px;
+    }
+
+    .fontSizeLi{
+        margin: 10px;
+        font-size: 20px;
+    }
+
+    .divSection{
+        margin: 20px;
+    }
+
+    #divAccedi{
+        border-bottom: 4px solid #ca6c00;
+        margin-left: 4px;
+        float: left;
+        width: 20%;
+        text-align: center;
+        font-weight: bold;
+        padding-right: 2px;
+    }
+
+    nav{
+        border-bottom: 4px solid #ca6c00;
+        border-top: none;
+        margin-left: 4px;
+        float: left;
+        width: 20%;
+        padding-right: 2px;
+    }
+
+    .content{
+        border: 4px solid #ca6c00;
+        margin-right: 4px;
+        margin-top: 1%;
+        margin-bottom: 10%;
+        width: 77%;
+        float: right;
+    }
+
+    #bodyLogin{
+        float: left;
+        width: 30%;
+        margin-left: 20%;
+        margin-top: 3%;
+    }
+
+    .campo input{
+        height: 40px;
+        font-size: 20px;
+        float: right;
+    }
+
+    .campo button{
+        font-size: 20px;
+        width: 100%;
+        font-weight: bold;
+        letter-spacing: 2px;
+    }
+
+    .divHeader{
+        width: 20%;
+    }
+
+    .divHeader1{
+        width: 60%;
+        border-left: 4px solid whitesmoke;
+    }
+
+    #divFormProfilo{
+        float: right;
+        width: 70%;
+        margin-right: 5%;
+    }
+
+    .campo textarea{
+        float: right;
+    }
+
+    .fieldForm{
+        height: 100px;
+    }
+
+    #fotoProfilo{
+        float: left;
+        margin-left: 5%;
+    }
+}
+
+@media only screen and (min-width: 480px) and (max-width: 1024px){
+    body{
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+    
+    h1{
+        font-size: 25px;
+    }
+    
+    h2{
+        font-size: 17px;
+    }
+    
+    h3{
+        font-size: 14px;
+    }
+    
+    p{
+        font-size: 12px;
+    }
+    
+    header{
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+    
+
+    #divSommario{
+        border: 2px solid #ca6c00;
+        margin-left: 4px;
+        float: left;
+        width: 20%;
+        padding-right: 2px;
+        margin-bottom: 2px;
+    }
+    
+    li{
+        margin-left: -15px;
+    }
+    
+    .fontSizeLi{
+        font-size: 14px;
+    }
+    
+    ul{
+        list-style-type: circle;
+    }
+
+    .divSection{
+        margin: 20px;
+    }
+
+    #divAccedi{
+        border: 2px solid #ca6c00;
+        margin-left: 4px;
+        margin-top: 2px;
+        float: left;
+        width: 20%;
+        text-align: center;
+        font-weight: bold;
+        padding-right: 2px;
+    }
+
+    nav{
+        border: 2px solid #ca6c00;
+        margin-left: 4px;
+        float: left;
+        width: 30%;
+        padding-right: 2px;
+        font-size: 20px;
+    }
+
+    .content{
+        border: 4px solid #ca6c00;
+        margin-right: 4px;
+        margin-bottom: 10%;
+        width: 75%;
+        float: right;
+    }
+
+    #bodyLogin{
+        float: left;
+        width: 60%;
+        margin-left: 5%;
+        margin-top: 3%;
+    }
+    
+    .campo label{
+        font-size: 15px;
+        margin-bottom: 10px;
+        word-wrap: break-word;
+        max-width: 50%;
+    }
+
+    .campo input{
+        height: 30px;
+        font-size: 15px;
+        float: right;
+    }
+
+    .campo button{
+        font-size: 15px;
+        width: 100%;
+        font-weight: bold;
+        letter-spacing: 2px;
+    }
+
+    .divHeader{
+        width: 20%;
+    }
+
+    .divHeader1{
+        padding-left: 10%;
+        width: 60%;
+    }
+
+    #divFormProfilo{
+        margin-left: -20%;
+        width: 100%;
+    }
+
+    .campo textarea{
+        float: right;
+    }
+
+    .fieldForm{
+        height: 60px;
+    }
+
+    #fotoProfilo{
+        margin-top: -10%;
+        margin-left: 40%;
+        margin-bottom: 10%;
+        height: auto;
+    }
+    
+    #noMarginTop{
+        width: 65%;
+    }
+}
+
+@media only screen and (max-width: 480px){
+    body{
+        background: whitesmoke;
+        font-family: Roboto, Arial, sans-serif;
+    }
+
+    header{
+        border: 4px solid whitesmoke;
+        background: #ca6c00;
+    }
+
+    h1{
+        font-size: 16px;
+    }
+
+    h2{
+        font-size: 14px;
+    }
+
+    h3{
+        font-size: 13px;
+    }
+
+    p{
+        font-size: 10px;
+    }
+
+    .divHeader{
+        width: 40%;
+    }
+
+    .divHeader1{
+        width: 50%;
+    }
+
+    #divSommario{
+        border: 2px solid #ca6c00;
+        margin-left:4px;
+        width: 97%;
+    }
+
+    .titoloNav{
+        padding-right: 20px;
+    }
+
+    li{
+        display: inline-block;
+        margin-right: 2%;
+        padding-right: 4%;
+        border-right: 2px solid #ca6c00;
+    }
+
+    li:last-child{
+        margin-right: 0px;
+        border-right: none;
+    }
+
+    .fontSizeLi li{
+        font-size: 13px;
+    }
+
+    .sizeLi{
+        margin-right: 15%;
+        padding-right: 15%;;
+    }
+
+    .divSection{
+        margin: 5px;
+    }
+
+    .content{
+        border: 2px solid #ca6c00;
+        margin-top: 4px;
+        margin-bottom: 10px;
+        width: 97%;
+        margin-right:auto;
+        margin-left:auto;
+    }
+
+    #noMarginTop{
+        margin-top: 4px;
+    }
+
+    #divAccedi{
+        border: 2px solid #ca6c00;
+        margin-left: auto;
+        margin-right:auto;
+        width: 97%;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    nav{
+        border: 2px solid #ca6c00;
+        margin-left: auto;
+        margin-right:auto;
+        width: 97%;
+    }
+
+    #bodyLogin{
+        width: 97%;
+        margin-top: 10%;
+        padding-bottom: 10px;
+    }
+
+    .campo label{
+        margin-bottom: 5px;
+        font-size: 13px;
+        word-wrap: break-word;
+        max-width: 50%;
+    }
+
+    .campo input{
+        height: 25px;
+        font-size: 13px;
+        padding-left: 10px;
+    }
+
+    .campo button{
+        margin-left:20px;
+        font-size: 15px;
+        width: 80%;
+        font-weight: bold;
+        letter-spacing: 2px;
+    }
+
+    #divFormProfilo{
+        margin-top: 20px;
+        width: 97%;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .fieldForm{
+        height: 80px;
+    }
+
+    #fotoProfilo{
+        margin-left: 35%;
+        margin-top: 8%;
+    }
+
+    img{
+        width: 50%;
+        height: auto;
+    }
+}
