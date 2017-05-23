@@ -1,0 +1,22 @@
+Entità: Utenti, Posts, Posttype.
+
+Utenti ha come attributi: 
+	id- chiave primaria generata automaticente dal database quando si inserisce una nuova istanza
+	nome- nome utente
+	cognome- cognome utente
+	password- chiave di accesso alla propria area
+	urlFotoProfilo- indirizzo foto personale
+	dataDiNascita- data di nascita
+Non ci sono chiavi esterne.
+
+Posts ha come attributi:
+	id- generato di default e chiave primaria
+	content- contenuto del post che può essere testo, link o immagine
+	tipo- indica quale dei tre tipi possibili è il post
+	autore- utente che ha pubblicato il post in questione
+Tipo e autore sono le chiavi esterne di questa entità. La relazione tra utenti e posts è di uno a molti; tra posts e posttype è di molti a uno.
+
+posttype ha come attributi:
+	id- generato di default e chiave primaria
+	nome- nome del post
+Non ci sono chiavi esterne. Ha una relazione di uno a molti con l'entità posts.

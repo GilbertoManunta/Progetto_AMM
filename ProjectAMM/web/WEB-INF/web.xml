@@ -34,6 +34,6 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>M3/descrizione.jsp</welcome-file>
+        <welcome-file>descrizione.jsp</welcome-file>
     </welcome-file-list>
 </web-app>

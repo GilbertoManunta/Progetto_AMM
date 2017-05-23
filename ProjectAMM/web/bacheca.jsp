@@ -23,9 +23,19 @@
         
         <c:set var="page" value="bacheca" scope="request"/>
         <jsp:include page="nav.jsp"/>
+
+                
+        <div id="container">
+            <div id="persone">
+                <h2>Persone</h2>
+            </div>
+            <div id="gruppi">
+                <h2>Gruppi</h2>
+            </div>
+        </div>
         
         <c:if test="${empty param.user}">
-            <p id="logOutLink"><a href="Login?logout=1">Logout</a></p>
+            <div id="logOutLink"><a href="Login?logout=1">Logout</a></div>
         </c:if>
         
         <div class="content" id="noMarginTop">

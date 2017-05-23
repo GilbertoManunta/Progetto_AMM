@@ -5,6 +5,11 @@
  */
 package amm.nerdbook.Classi;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -13,6 +18,16 @@ import java.util.ArrayList;
  * @author Gilberto Manunta
  */
 public class PostFactory {
+
+    //DB creation
+    private String connectionString;
+    
+    public void setConnectionString(String s){
+	this.connectionString = s;
+    }
+    public String getConnectionString(){
+            return this.connectionString;
+    }
 
     //Pattern Design Singleton
     private static PostFactory singleton;
@@ -26,58 +41,54 @@ public class PostFactory {
 
     private ArrayList<Post> listaPost = new ArrayList<Post>();
 
-    private PostFactory() {
-        
+    private PostFactory() {}
+
+public Post getPostById(int id) {
         UserFactory utenteFactory = UserFactory.getInstance();
 
-        //Creazione Post
-        Post post1 = new Post();
-        post1.setContent("Lorem ipsum!");
-        post1.setUrlImage("");
-        post1.setId(0);
-        post1.setUser(utenteFactory.getUserById(0));
-        post1.setPostType(Post.Type.TEXT);
+        try {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "ammdb", "ammdb");
+            
+            String query = 
+                      "select * from posts "
+                    + "join posttype on posts.tipo = posttype.posttype_id "
+                    + "where post_id = ?";
+            
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+            
+            // Si associano i valori
+            stmt.setInt(1, id);
+            
+            // Esecuzione query
+            ResultSet res = stmt.executeQuery();
 
-        Post post2 = new Post();
-        post2.setContent("Doloret");
-        post1.setUrlImage("");
-        post2.setId(1);
-        post2.setUser(utenteFactory.getUserById(2));
-        post2.setPostType(Post.Type.IMAGE);
+            // ciclo sulle righe restituite
+            if (res.next()) {
+                Post current = new Post();
+                //imposto id del post
+                current.setId(res.getInt("post_id"));
+                
+                //impost il contenuto del post
+                current.setContent(res.getString("content"));
+                
+                //imposto il tipo del post
+                current.setPostType(this.postTypeFromString(res.getString("nome")));
+                
+                //imposto l'autore del post
+                User autore = utenteFactory.getUserById(res.getInt("autore"));
+                current.setUser(autore);
 
-        Post post3 = new Post();
-        post3.setContent("");
-        post3.setUrlImage("Immagini/incidente.jpg");
-        post3.setId(2);
-        post3.setUser(utenteFactory.getUserById(3));
-        post3.setPostType(Post.Type.IMAGE);
-
-        Post post4 = new Post();
-        post4.setContent("Dolores de panza");
-        post1.setUrlImage("");
-        post4.setId(3);
-        post4.setUser(utenteFactory.getUserById(1));
-        post4.setPostType(Post.Type.TEXT);
-
-        Post post5 = new Post();
-        post5.setContent("");
-        post1.setUrlImage("");
-        post5.setId(4);
-        post5.setUser(utenteFactory.getUserById(0));
-        post5.setPostType(Post.Type.LINK);
-
-        listaPost.add(post1);
-        listaPost.add(post2);
-        listaPost.add(post3);
-        listaPost.add(post4);
-        listaPost.add(post5);
-    }
-
-    public Post getPostById(int id) {
-        for (Post post : this.listaPost) {
-            if (post.getId() == id) {
-                return post;
+                stmt.close();
+                conn.close();
+                return current;
             }
+
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return null;
     }
@@ -85,12 +96,93 @@ public class PostFactory {
     public List getPostList(User usr) {
 
         List<Post> listaPost = new ArrayList<Post>();
+        
+        try {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "ammdb", "ammdb");
+            
+            String query = 
+                      "select * from posts "
+                    + "join posttype on posts.type = posttype.posttype_id "
+                    + "where post_id = ?";
+            
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+            
+            // Si associano i valori
+            stmt.setInt(1, usr.getId());
+            
+            // Esecuzione query
+            ResultSet res = stmt.executeQuery();
 
-        for (Post post : this.listaPost) {
-            if (post.getUser().equals(usr)) {
-                listaPost.add(post);
+            // ciclo sulle righe restituite
+            if (res.next()) {
+                Post current = new Post();
+                //imposto id del post
+                current.setId(res.getInt("post_id"));
+                
+                //impost il contenuto del post
+                current.setContent(res.getString("content"));
+                
+                //imposto il tipo del post
+                current.setPostType(this.postTypeFromString(res.getString("nome")));
+              
+                current.setUser(usr);
+                
+                listaPost.add(current);
             }
+
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return listaPost;
+    }
+    
+    public void addNewPost(Post post){
+        try {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "gato", "gato");
+            
+            String query = 
+                      "insert into posts (post_id, content, type, author) "
+                    + "values (default, ? , ? , ? )";
+            
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+            
+            // Si associano i valori
+            stmt.setString(1, post.getContent());
+
+            stmt.setInt(2, this.postTypeFromEnum(post.getPostType()));
+            
+            stmt.setInt(3, post.getUser().getId());
+            
+            // Esecuzione query
+            stmt.executeUpdate();
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
+    
+    private Post.Type postTypeFromString(String type){
+        if(type.equals("TEXT"))
+            return Post.Type.TEXT;
+        else if(type.equals("IMAGE"))
+            return Post.Type.IMAGE;
+        else
+            return Post.Type.LINK;
+    }
+    
+    private int postTypeFromEnum(Post.Type type){
+        //È realizzabile in modo più robusto rispetto all'hardcoding degli indici
+        if(type == Post.Type.TEXT)
+                return 1;
+        else if(type==Post.Type.IMAGE)
+                return 2;
+        else
+            return 3;
     }
 }

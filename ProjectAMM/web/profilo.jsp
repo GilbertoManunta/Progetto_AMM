@@ -14,7 +14,7 @@
         <meta name="author" content="Manunta Gilberto">
         <meta name="keywords" content="profilo nerdbook social network">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" media="screen" href="M3/style.css">
+        <link rel="stylesheet" type="text/css" media="screen" href="style.css">
     </head>
     <body>
     <c:set var="titolo" value="Profilo" scope="request"/>

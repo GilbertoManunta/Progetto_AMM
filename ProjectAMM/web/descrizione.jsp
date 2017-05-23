@@ -16,7 +16,7 @@
         <meta name="author" content="Manunta Gilberto">
         <meta name="keywords" content="descrizione nerdbook social network accesso">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" media="screen" href="M3/style.css">
+        <link rel="stylesheet" type="text/css" media="screen" href="style.css">
     </head>
     <body>
         <c:set var="titolo" value="Descrizione sito" scope="request"/>
@@ -99,10 +99,13 @@
                         Duis pellentesque odio purus, sit amet tempus est gravida sed. Sed laoreet nulla eu bibendum ullamcorper.
                         Donec a aliquam dui. Vivamus tristique egestas metus id volutpat.</p>
                 </div>
+                <div id="tornaSu">
+                    <p><a href="#testa">Torna su</a></p>
+                </div>
             </div>
             <div id="divAccedi">
                 <h2>Accedi</h2>
-                <p>Clicca <a href="M3/login.jsp">qui</a> per accedere.</p>
+                <p>Clicca <a href="login.jsp">qui</a> per accedere.</p>
             </div>
     </body>
 </html>

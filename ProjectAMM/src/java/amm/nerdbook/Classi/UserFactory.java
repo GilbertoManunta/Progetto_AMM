@@ -5,6 +5,11 @@
  */
 package amm.nerdbook.Classi;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -12,6 +17,16 @@ import java.util.ArrayList;
  * @author Gilberto Manunta
  */
 public class UserFactory {
+    
+    private String connectionString;
+    
+    public void setConnectionString(String s){
+	this.connectionString = s;
+    }
+    public String getConnectionString(){
+            return this.connectionString;
+    }
+    
     //Pattern Design Singleton
     private static UserFactory singleton;
 
@@ -24,65 +39,81 @@ public class UserFactory {
 
     private ArrayList<User> listaUtenti = new ArrayList<User>();
 
-    private UserFactory() {
-        //Creazione utenti
-        
-        User utente1 = new User();
-        utente1.setId(0);
-        utente1.setNome("Gilberto");
-        utente1.setCognome("Manunta");
-        utente1.setFraseDiPresentazione("Ciao a tutti");
-        utente1.setPassword("123456789");
-        utente1.setUrlFotoProfilo("Immagini/profilo1.jpg");
-        utente1.setDataDiNascita("08/01/1996");
-
-        User utente2 = new User();
-        utente2.setId(0);
-        utente2.setNome("Marco");
-        utente2.setCognome("Iervolino");
-        utente2.setFraseDiPresentazione("Cosa vuoi?");
-        utente2.setPassword("cosavuoi1");
-        utente2.setUrlFotoProfilo("Immagini/profilo2.jpg");
-        utente2.setDataDiNascita("06/06/1996");
-
-        User utente3 = new User();
-        utente3.setId(0);
-        utente3.setNome("Mauro");
-        utente3.setCognome("Marini");
-        utente3.setFraseDiPresentazione("Bellaaaa");
-        utente3.setPassword("busho97");
-        utente3.setUrlFotoProfilo("Immagini/profilo3.png");
-        utente3.setDataDiNascita("24/04/1997");
-
-        User utente4 = new User();
-        utente4.setId(0);
-        utente4.setNome(null);
-        utente4.setCognome(null);
-        utente4.setFraseDiPresentazione(null);
-        utente4.setPassword("0");
-        utente4.setUrlFotoProfilo(null);
-        utente4.setDataDiNascita(null);
-
-        listaUtenti.add(utente1);
-        listaUtenti.add(utente2);
-        listaUtenti.add(utente3);
-        listaUtenti.add(utente4);
-    }
+    private UserFactory() {}
 
     public User getUserById(int id) {
-        for (User utente : this.listaUtenti) {
-            if (utente.getId() == id) {
-                return utente;
+        try {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "gato", "gato");
+            
+            String query = 
+                      "select * from utenti "
+                    + "where user_id = ?";
+            
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+            
+            // Si associano i valori
+            stmt.setInt(1, id);
+            
+            // Esecuzione query
+            ResultSet res = stmt.executeQuery();
+
+            // ciclo sulle righe restituite
+            if (res.next()) {
+                User current = new User();
+                current.setId(res.getInt("user_id"));
+                current.setNome(res.getString("nome"));
+                current.setCognome(res.getString("cognome"));
+                current.setPassword(res.getString("password"));
+                current.setFraseDiPresentazione(res.getString("fraseDiPresentazione"));
+                current.setUrlFotoProfilo(res.getString("urlFotoProfilo"));
+                
+                stmt.close();
+                conn.close();
+                return current;
             }
+
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return null;
     }
     
     public int getIdByUserAndPassword(String user, String password){
-        for(User utente : this.listaUtenti){
-            if(utente.getNome().equals(utente) && utente.getPassword().equals(password)){
-                return utente.getId();
+        try {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "gato", "gato");
+            
+            String query = 
+                      "select user_id from utenti "
+                    + "where nome = ? and password = ?";
+            
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+            
+            // Si associano i valori
+            stmt.setString(1, user);
+            stmt.setString(2, password);
+            
+            // Esecuzione query
+            ResultSet res = stmt.executeQuery();
+
+            // ciclo sulle righe restituite
+            if (res.next()) {
+                int id = res.getInt("user_id");
+
+                stmt.close();
+                conn.close();
+                return id;
             }
+
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return -1;
     }

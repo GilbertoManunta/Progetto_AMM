@@ -14,7 +14,7 @@
     <ul class="fontSizeLi">
         <li class="sizeLi"><a href="descrizione.jsp">Descrizione sito</a></li>
         <c:if test="${page=='bacheca' or page=='profilo'}"><li><a href="login.jsp">Login</a></li></c:if>
-        <c:if test="${page=='login'}"><li><a href="profilo.html">Profilo</a></li></c:if>
+        <c:if test="${page=='login'}"><li><a href="profilo.jsp">Profilo</a></li></c:if>
         <c:if test="${page=='login'}"><li><a href="bacheca.jsp">Bacheca</a></li></c:if>
     </ul>
 </nav>

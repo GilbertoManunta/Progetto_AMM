@@ -19,7 +19,7 @@
         <link rel="stylesheet" type="text/css" media="screen" href="style.css">
     </head>
     <body>
-        <c:set var="titolo" value="Login" scope="request"/>
+        <c:set var="titolo" value="login" scope="request"/>
         <jsp:include page="header.jsp"/>
         
         <c:set var="page" value="login" scope="request"/>
